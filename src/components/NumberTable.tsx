@@ -14,7 +14,6 @@ interface NumberTableProps {
 const NumberTable: React.FC<NumberTableProps> = ({ selectedNumbers, onNumberSelect, busyNumbers }) => {
     return (
         <div className="number-table">
-            <h2>Selecione os seus números:</h2>
             <table>
                 <tbody>
                     {Array.from({ length: 10 }, (_, rowIndex) => (
