@@ -58,10 +58,10 @@ const App: React.FC = () => {
 
     const handleShare = async () => {
         if (tableRef.current) {
-            // Cria um container temporário para adicionar título e instruções
             const clone = tableRef.current.cloneNode(true) as HTMLElement;
+
             const container = document.createElement('div');
-            container.style.backgroundImage = "url('https://drive.google.com/file/d/1OiTlYriobb7H0RFPiToAb1LhB-x9I_aG/view?usp=sharing')";
+            container.style.backgroundImage = "url('https://i.imgur.com/HzgCUfy.webp')";
             container.style.backgroundSize = "cover";
             container.style.backgroundPosition = "center";
             container.style.padding = '24px';
@@ -69,23 +69,47 @@ const App: React.FC = () => {
             container.style.color = '#fff';
             container.style.width = 'fit-content';
             container.style.margin = '0 auto';
+            container.style.fontFamily = 'Arial, sans-serif';
 
             const title = document.createElement('h2');
             title.innerText = 'Chá rifa Miguel';
             title.style.textAlign = 'center';
+            title.style.marginBottom = '8px';
+            title.style.color = '#ffeb3b';
 
             const desc = document.createElement('p');
             desc.innerText = 'Escolha um número de 1 a 100 e entregue uma fralda para a mamãe.';
             desc.style.textAlign = 'center';
-            desc.style.marginBottom = '16px';
+            desc.style.marginBottom = '12px';
+            title.style.color = '#ffeb3b';
+
+            const prize = document.createElement('p');
+            prize.innerText = 'Prêmio: R$150,00';
+            prize.style.textAlign = 'center';
+            prize.style.marginBottom = '4px';
+            prize.style.fontWeight = 'bold';
+            title.style.color = '#ffeb3b';
+
+            const date = document.createElement('p');
+            date.innerText = 'Sorteio: 08 de novembro de 2025';
+            date.style.textAlign = 'center';
+            date.style.marginBottom = '16px';
+            date.style.fontStyle = 'italic';
+            title.style.color = '#ffeb3b';
 
             container.appendChild(title);
             container.appendChild(desc);
+            container.appendChild(prize);
+            container.appendChild(date);
             container.appendChild(clone);
 
             document.body.appendChild(container);
 
-            const canvas = await html2canvas(container, { backgroundColor: null, useCORS: true });
+            const canvas = await html2canvas(container, {
+                backgroundColor: null,
+                useCORS: true
+            });
+
             const link = document.createElement('a');
             link.download = 'cha-rifa-miguel.png';
             link.href = canvas.toDataURL();
@@ -94,6 +118,7 @@ const App: React.FC = () => {
             document.body.removeChild(container);
         }
     };
+
 
     return (
         <div className="app-container">
