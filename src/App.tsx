@@ -61,7 +61,7 @@ const App: React.FC = () => {
             // Cria um container temporário para adicionar título e instruções
             const clone = tableRef.current.cloneNode(true) as HTMLElement;
             const container = document.createElement('div');
-            container.style.backgroundImage = "url('/bg_2.jpg')";
+            container.style.backgroundImage = "url('https://drive.google.com/file/d/1OiTlYriobb7H0RFPiToAb1LhB-x9I_aG/view?usp=sharing')";
             container.style.backgroundSize = "cover";
             container.style.backgroundPosition = "center";
             container.style.padding = '24px';
@@ -85,7 +85,7 @@ const App: React.FC = () => {
 
             document.body.appendChild(container);
 
-            const canvas = await html2canvas(container, { backgroundColor: null });
+            const canvas = await html2canvas(container, { backgroundColor: null, useCORS: true });
             const link = document.createElement('a');
             link.download = 'cha-rifa-miguel.png';
             link.href = canvas.toDataURL();
